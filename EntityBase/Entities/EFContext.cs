@@ -14,5 +14,6 @@ namespace EntityBase.Entities
         {
         }
         public DbSet<AnimalType> AnimalTypes { get; set; }
+        public DbSet<UsersList> Users { get; set; }
     }
 }

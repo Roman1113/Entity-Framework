@@ -52,9 +52,14 @@
   <ItemGroup>
     <Compile Include="Entities\AnimalType.cs" />
     <Compile Include="Entities\EFContext.cs" />
+    <Compile Include="Entities\UsersList.cs" />
     <Compile Include="Migrations\201906250714380_Add tblAnimalTypes.cs" />
     <Compile Include="Migrations\201906250714380_Add tblAnimalTypes.Designer.cs">
       <DependentUpon>201906250714380_Add tblAnimalTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906250821482_Add tblUsers.cs" />
+    <Compile Include="Migrations\201906250821482_Add tblUsers.Designer.cs">
+      <DependentUpon>201906250821482_Add tblUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -67,6 +72,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201906250714380_Add tblAnimalTypes.resx">
       <DependentUpon>201906250714380_Add tblAnimalTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906250821482_Add tblUsers.resx">
+      <DependentUpon>201906250821482_Add tblUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
