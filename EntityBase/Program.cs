@@ -1,9 +1,12 @@
 ﻿using EntityBase.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace EntityBase
 {
@@ -67,14 +70,23 @@ namespace EntityBase
                             }break;
                         case 5:
                             {
-                                
+                                Console.WriteLine("Введіть Id користувача: ");
+                                int userId = int.Parse(Console.ReadLine());
+                                Console.WriteLine("Введіть імя користувача: ");
+                                string userName = Console.ReadLine();
+                                context.Users.AddOrUpdate(a => a.Id, new Entities.UsersList
+                                {
+                                    Id = userId,
+                                    Name = userName
+                                });
                             }
                             break;
                         case 6:
                             {
-                                UsersList usersList = new UsersList();
-                                context.Users.Remove(usersList);
-                                context.SaveChanges();
+                                int del = 0;
+                                Console.WriteLine("Вкажіть Id користувача:");
+                                del = Convert.ToInt32(Console.ReadLine());
+                                DeleteCustomer(del);
                             }
                             break;
                         default:
@@ -82,6 +94,18 @@ namespace EntityBase
                     }
                 } while (action != 0);
             }
+                void DeleteCustomer(int id)
+                {
+                    using (var context = new EFContext())
+                    {
+                        const string query = "DELETE FROM [dbo].[Users] WHERE [id]={0}";
+                        var rows = context.Database.ExecuteSqlCommand(query, id);
+                        // rows >= 1 - count of deleted rows,
+                        // rows = 0 - nothing to delete.
+                    }
+                }
+
         }
+
     }
 }
